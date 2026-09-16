@@ -31,7 +31,7 @@ import { Product
       {products.map(function (producto) {
         return (
           <div key={producto.id} style={{ border: "1px solid gray", margin: "10px", padding: "10px" }}>
-            <img src={producto.image} alt={producto.title} width="100" />
+            <Image src={producto.image} alt={producto.title} width={100} height={100} />
             <h3>{producto.title}</h3>
             <p>Categoria: {producto.category}</p>
             <p>Precio: ${producto.price}</p>
