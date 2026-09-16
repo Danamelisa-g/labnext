@@ -2,7 +2,7 @@
 
 import {useEffect,useState} from "react";
 import Link from "next/link";
-import Image from "next/image";
+import img from "next/image";
 import { Product
 
  } from "@/types/products";
@@ -27,18 +27,28 @@ import { Product
     return(
       <div style={{ padding: "20px" }}>
       <h1>Catálogo de productos</h1>
-
-      {products.map(function (producto) {
-        return (
-          <div key={producto.id} style={{ border: "1px solid gray", margin: "10px", padding: "10px" }}>
-            <Image src={producto.image} alt={producto.title} width={100} height={100} />
-            <h3>{producto.title}</h3>
-            <p>Categoria: {producto.category}</p>
-            <p>Precio: ${producto.price}</p>
-            <Link href={`/productos/${producto.id}`}>Ver detalle</Link>
-          </div>
-        );
-      })}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(4, 1fr)",
+          gap: "15px",
+        }}
+      >
+        {products.map(function (producto) {
+          return (
+            <div
+              key={producto.id}
+              style={{ border: "1px solid gray", padding: "10px" }}
+            >
+              <img src={producto.image} alt={producto.title} width="100" />
+              <h3>{producto.title}</h3>
+              <p>Categoria: {producto.category}</p>
+              <p>Precio: ${producto.price}</p>
+              <Link href={`/productos/${producto.id}`}>Ver detalle</Link>
+            </div>
+          );
+        })}
+      </div>
     </div>
-    );
+  );
 }
